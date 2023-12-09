@@ -1,0 +1,60 @@
+*, *::after, *::before
+{
+  box-sizing: border-box;
+  padding:0;
+  margin: 0;
+}
+
+body
+{
+  background-color: darkslategray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.wrap
+{
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.box
+{
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.145);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+
+
+.box__heading
+{
+  font-size: large;
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.box__para
+{
+  font-size: small;
+  color: lightgray;
+  font-weight: bold;
+}
+
+.playing
+{
+  border: 4px solid slategray;
+  transform: scale(1.2);
+}
