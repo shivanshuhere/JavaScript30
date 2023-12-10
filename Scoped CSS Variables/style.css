@@ -1,0 +1,65 @@
+:root
+{
+    --clr :#10375178;
+    --blr :2px;
+    --spc :10px;
+}
+
+
+*, *::after, *::before
+{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.wrap
+{
+    background-color: darkslategray;
+    color: whitesmoke;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.box1 
+{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.box1 Js{
+    color: (--clr);
+}
+
+.box1 .selectors
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.box2
+{
+    display: flex;
+    justify-content: center;
+    background-color: var(--clr);
+    padding: var(--spc);
+    filter: blur(var(--blr));
+}
+
+
+
+.img
+{
+    width: 24rem;
+}
