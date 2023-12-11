@@ -2,11 +2,40 @@ const input = document.querySelectorAll('input')
 
 input.forEach(input=>{
     input.addEventListener('change', (e)=>{
-        document.documentElement()
+        // spacing
+        if (e.target.id == 'space')
+        {
+           document.documentElement.style.setProperty('--spc', `${e.target.value}px`)
+        }
+        //blur
+        if (e.target.id == 'blur')
+        {
+            document.documentElement.style.setProperty('--blr', `${e.target.value}px`)
+        }
+        //color
+        if (e.target.id == 'color')
+        {
+            document.documentElement.style.setProperty('--clr', e.target.value)
+        }
     })
     
     input.addEventListener('mousemove', (e)=>{
-        console.log(e.target.value)
+        // spacing
+        if (e.target.id == 'space')
+        {
+           document.documentElement.style.setProperty('--spc', `${e.target.value / 2}px`)
+        }
+        //blur
+        if (e.target.id == 'blur')
+        {
+            document.documentElement.style.setProperty('--blr', `${e.target.value}px`)
+        }
+        //color
+        if (e.target.id == 'color')
+        {
+            document.documentElement.style.setProperty('--clr', e.target.value)
+        }
     })
+
 })
 

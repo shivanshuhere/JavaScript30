@@ -1,7 +1,7 @@
 :root
 {
-    --clr :#10375178;
-    --blr :2px;
+    --clr :white;
+    --blr :0px;
     --spc :10px;
 }
 
@@ -20,7 +20,7 @@
     background-color: darkslategray;
     color: whitesmoke;
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -35,8 +35,8 @@
     align-items: center;
 }
 
-.box1 Js{
-    color: (--clr);
+.header span{
+    color: var(--clr);
 }
 
 .box1 .selectors
