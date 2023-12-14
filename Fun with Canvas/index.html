@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+  // select canvas and context of canvas
+  const canvas = document.querySelector('#draw')
+  const context = canvas.getContext('2d');
+  
+  canvas.widht = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  context.strokeStyle = '#BADA55'; // color, gradient or pattern for stroke
+  context.lineJoin = 'round'; // type of corner created when two lines joins
+  context.lineCap = 'round'; // end of stroke 
+  context.lineWidth = 10; // stroke line width
+
+  let isDrawing = false,
+  direction = true;
+
+  let x = 0,
+  y = 0,
+  hue = 0,
+  lineWidth = 10;
+
+  function draw (e) {
+    if (!isDrawing) return;
+    console.log(e);
+    context.strokeStyle = `hsl(${hue}, 100%, 70%)`
+    context.beginPath()
+    context.moveTo(x, y) // starts
+    context.lineTo(e.offsetX, e.offsetY) // to 
+    context.stroke()
+    
+    
+    x = e.offsetX ; y = e.offsetY;
+    hue++;
+    if (hue > 360)
+    {
+      hue = 0;
+    }
+
+    if (context.lineWidth >= 100 || context.lineWidth <= 1) {
+      direction = !direction;
+    }
+
+    if (direction) {
+      context.lineWidth++;
+    }
+    else {
+      context.lineWidth--;
+    }
+
+  }
+  canvas.addEventListener('mousedown', (e)=>{
+    isDrawing = true
+    x = e.offsetX;
+    y = e.offsetY
+    })
+
+  canvas.addEventListener('mousemove', draw)
+  canvas.addEventListener('mouseup',  ()=> isDrawing = false)
+  canvas.addEventListener('mouseout',  ()=> isDrawing = false)
+
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+  }
+
+</style>
+
+</body>
+</html>
