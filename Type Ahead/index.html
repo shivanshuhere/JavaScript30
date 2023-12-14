@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀 | Shivanshu</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+// fetch cities  and states data  from api 
+const cities = []
+fetch(endpoint)
+.then( response => response.json()) // get promise
+.then (data => { cities.push(...data)}) // get data
+
+
+function findPlace (word, cities) { 
+  return cities.filter(ele =>
+  { 
+    // reg exp on search
+    const regExp = new RegExp(word, 'gi')
+    // for city and state
+    return  (ele.city.match(regExp) || ele.state.match(regExp)) 
+  })
+}
+
+function displayPlace ()
+{ 
+  const placeList =  findPlace(this.value, cities);
+  suggestions.innerHTML =  ''
+  placeList.forEach( place =>{
+    const newList = document.createElement('li');
+    const regexp = new RegExp(this.value, 'gi');
+    const city = place.city.replace(regexp, `<span class="hl">${this.value}</span>`)
+    const state = place.state.replace(regexp, `<span class="hl">${this.value}</span>`)
+    newList.innerHTML = `<span class="name">${city}, ${state}</span>`
+  suggestions.appendChild(newList)
+  })
+}
+
+const search = document.querySelector('.search')
+const suggestions = document.querySelector('.suggestions')
+
+search.addEventListener('keyup', displayPlace)
+search.addEventListener('change', displayPlace)
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
