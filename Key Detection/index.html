@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script type="text/javascript" src="./cornify.js"></script>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <style>
+    body {
+      text-align: center;
+      font-size: xx-large;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+  </style>
+  <body>
+    <script>
+      let keyArr = []
+      const win  = 'shivu'
+      const body = document.querySelector('body');
+      let winCount = localStorage.getItem('winCount');
+      window.addEventListener('keyup', (e)=> {
+        body.innerHTML = ''
+        if (keyArr.length > 4 ) {
+          keyArr.shift()
+          keyArr.push(e.key)
+        }
+        else {
+          keyArr.push(e.key)
+        }
+
+        if (keyArr.join('') === win) 
+        {
+          winCount++;
+          if (winCount === 1) {
+            body.textContent = `You win !`
+          }
+          else {
+            body.textContent = `You won ${winCount} times!`
+          }
+          localStorage.setItem('winCount', winCount)
+        }
+      })
+    </script>
+  </body>
+</html>
